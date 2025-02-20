@@ -4,7 +4,10 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import { FiSend } from 'react-icons/fi';
 import { v4 as uuidv4 } from 'uuid';
 
-const socket = io.connect('http://localhost:3001');
+// Connect to the deployed backend on Render
+const socket = io.connect('https://real-backend-8mte.onrender.com', {
+  transports: ['websocket'], // Ensure WebSocket connection
+});
 
 const Chat = ({ username, room }) => {
   const [currentMessage, setCurrentMessage] = useState('');
