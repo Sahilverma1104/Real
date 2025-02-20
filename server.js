@@ -1,12 +1,20 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
+
+// Enable CORS for GitHub Pages frontend
+app.use(cors({
+  origin: ["https://sahilverma1104.github.io/Real"],
+  methods: ["GET", "POST"]
+}));
+
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: ["https://sahilverma1104.github.io/Real"],
     methods: ["GET", "POST"]
   }
 });
